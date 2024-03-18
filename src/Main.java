@@ -112,12 +112,18 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         System.out.println("Choose the amount you need to pay:");
         System.out.println("___________________________");
-        double amount = scan.nextDouble();
-        while (BigDecimal.valueOf(amount).scale() > 2 || amount <= 0) {
-            System.out.println("ERROR! Print an amount with not more than 2 decimals!");
-            System.out.println("Choose the amount you need to pay:");
-            System.out.println("___________________________");
+        double amount = -1;
+        try {
             amount = scan.nextDouble();
+            while (BigDecimal.valueOf(amount).scale() > 2 || amount <= 0) {
+                System.out.println("ERROR! Print an amount with not more than 2 decimals!");
+                System.out.println("Choose the amount you need to pay:");
+                System.out.println("___________________________");
+                amount = scan.nextDouble();
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR! Insert a number with possible decimals!");
+            amount = Amount();
         }
         return amount;
     }
