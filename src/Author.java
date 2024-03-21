@@ -1,3 +1,8 @@
+/**
+ * "Author" class with inner class "Book"
+ *
+ * @author Ivan Popovych
+ */
 public class Author {
     private String name;
 
